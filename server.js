@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // TODO: Build an twitter analog api with uploading text posts
-// TODO: Add comments
 // TODO: Add auth
 // TODO: Add README.md
 // TODO: Deploy that into Heroku
