@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const morgan = require("morgan");
 
-const authRouter = require('./authRouter')
+const authRouter = require('./app/routes/authRouter')
 
 // TODO: Build an twitter analog api with uploading text posts
-// TODO: Integrate auth functional with existing functional (Posts and comments)
 // TODO: Add README.md
 // TODO: Deploy that into Heroku
 

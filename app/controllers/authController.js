@@ -1,9 +1,9 @@
-const User = require('./app/models/User')
-const Role = require('./app/models/Role')
+const User = require('../models/User')
+const Role = require('../models/Role')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator')
-const {secret} = require("./config/config")
+const {secret} = require("../../config/config")
 
 const generateAccessToken = (id, roles) => {
     const payload = {
