@@ -6,7 +6,6 @@ const morgan = require("morgan");
 const authRouter = require('./app/routes/authRouter')
 
 // TODO: Build an twitter analog api with uploading text posts
-// TODO: Add README.md
 // TODO: Deploy that into Heroku
 
 // create express app
