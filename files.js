@@ -30,3 +30,13 @@ if (!fs.existsSync('./assets')) {
         console.log('folder removed')
     })
 }
+
+// deleting files
+if (fs.existsSync('./docs/deletting.txt')){
+    fs.unlink('./docs/deletting.txt', (err) => {
+        if (err){
+            console.log(err);
+        }
+        console.log('file deleted');
+    })
+}
