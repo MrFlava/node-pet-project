@@ -16,5 +16,8 @@
     "url": "https://github.com/MrFlava/node-pet-project/issues"
   },
   "homepage": "https://github.com/MrFlava/node-pet-project#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
