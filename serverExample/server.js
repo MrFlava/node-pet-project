@@ -12,7 +12,6 @@ const server = http.createServer((req, res) => {
     });
 
     greet();
-    greet();
 
     // set header content type and write
     res.setHeader('Content-Type', 'text/html');
