@@ -17,6 +17,7 @@
   "homepage": "https://github.com/MrFlava/node-pet-project#readme",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2"
   }
 }
