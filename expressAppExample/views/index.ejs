@@ -1,25 +1,8 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BLOGG Ninja | <%= title %></title>
-    </head>
-
+    <%- include("./partials/head.ejs") %>
     <body>
-        <% const name = 'mario' %>
+        <%- include("./partials/nav.ejs") %>
 
-        <nav>
-            <div class="site-title">
-                <p><%= name %></p>
-                <a href="/"><h1>Blog ninja</h1></a>
-                <p>A net ninja sites</p>
-            </div>
-            <ul>
-                <li><a href="/">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">Blogs create</a></li>
-            </ul>
-        </nav>
         <div class="blogs-content">
             <h2>All blogs</h2>
 
@@ -32,5 +15,6 @@
                 <p>No blogs</p>
             <% } %>
         </div>
+        <%- include("./partials/footer.ejs") %>
     </body>
 </html>
