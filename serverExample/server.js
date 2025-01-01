@@ -2,8 +2,6 @@ const http = require('http')
 const fs = require('fs');
 const _ = require('lodash');
 
-const dbConn = 'mongodb://localhost:27017/NodeTest/'
-
 const server = http.createServer((req, res) => {
     // lodash
     const num = _.random(1, 5);

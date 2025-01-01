@@ -1,14 +1,24 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const mongoose = require('mongoose');
+
+// connect to db
+const dbConn = 'mongodb://localhost:27017/NodeTest/'
+mongoose.connect(dbConn).then((result) => {
+    console.log('connected to MongoDB');
+    // listen for requests
+    app.listen(3000);
+}).catch((err) => {
+    console.log(err);
+});
+
+
 // express app
 const app = express();
 
 // register view engine
 app.set('view engine', 'ejs');
-
-// listen for requests
-app.listen(3000);
 
 // middleware and static files
 app.use(express.static('public'));
