@@ -1,10 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
+const Blog = require('./models/blog');
 
 const mongoose = require('mongoose');
 
 // connect to db
-const dbConn = 'mongodb://localhost:27017/NodeTest/'
+const dbConn = 'mongodb://localhost:27017/NodeTest'
 mongoose.connect(dbConn).then((result) => {
     console.log('connected to MongoDB');
     // listen for requests
@@ -35,6 +36,38 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     console.log('next middleware');
     next();
+})
+
+app.get('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title: 'New Blog',
+        snippet: 'about some stuff',
+        body: 'Lorem ipsum dolor dollar',
+    });
+
+    blog.save().then((result) => {
+        res.send({result})
+    }).catch((err) => {
+        console.log(err);
+    });
+})
+
+app.get('/all-blogs', (req, res) => {
+    Blog.find({}).then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+app.get('/blog/:id', (req,res) => {
+    Blog.findById(req.params.id).then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        console.log(err);
+    }).catch((err) => {
+        console.log(err);
+    })
 })
 
 app.get('/', (req, res) => {
