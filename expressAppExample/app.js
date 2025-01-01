@@ -1,10 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
+const Blog = require('./models/blog');
 
 const mongoose = require('mongoose');
 
 // connect to db
-const dbConn = 'mongodb://localhost:27017/NodeTest/'
+const dbConn = 'mongodb://localhost:27017/NodeTest'
 mongoose.connect(dbConn).then((result) => {
     console.log('connected to MongoDB');
     // listen for requests
@@ -38,17 +39,21 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    const blogs = [
-        {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    ];
-    res.render('index', {title: 'Express server example', blogs});
+   res.redirect('/blogs')
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {title: 'About'});
 });
+
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({createdAt: -1})
+        .then((blogs) => {
+        res.render('index', {title: 'All blogs', blogs});
+    }).catch((err) => {
+        console.log(err);
+    })
+})
 
 app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Create blog'})
