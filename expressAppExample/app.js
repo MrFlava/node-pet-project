@@ -23,6 +23,7 @@ app.set('view engine', 'ejs');
 
 // middleware and static files
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
 app.use((req, res, next) => {
@@ -53,13 +54,24 @@ app.get('/blogs', (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
-})
+});
+
+app.post('/create', (req, res) => {
+    const blog = new Blog(req.body);
+
+    blog.save().then((result) => {
+        console.log(result);
+        res.redirect('/blogs');
+    }).catch((err) => {
+        console.log(err);
+    })
+});
 
 app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Create blog'})
-})
+});
 
 // 404 page
 app.use((req, res) => {
     res.status(404).render('404', {title: 'Not found'});
-})
+});
